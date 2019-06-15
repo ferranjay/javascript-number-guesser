@@ -37,9 +37,9 @@ guessBtn.addEventListener('click', function(){
     let guess = parseInt(guessInput.value);
     
     // validate
-    if(isNaN(guess) || guess < min || guess > max){
+    if(isNaN || guess < min || guess > max){
     // if any of the above is true we dont want the game to continue and send msg
-        setMessage(`please enter a number between ${min} and ${max}', 'red`);
+        setMessage(`please enter a number between ${min} and ${max}`, 'red');
     }
 
 
@@ -50,7 +50,7 @@ if(guess === winNumber){
     // change border color 
     guessInput.style.borderColor = 'green';
     // set message 
-    setMessage(`${winNumber} is correct!, YOU WIN!, green`);
+    setMessage(`${winNumber} is correct!, YOU WIN!`, 'green');
 
 }   else {
 
