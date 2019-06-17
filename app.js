@@ -12,7 +12,8 @@
 
 let min = 1,
     max = 10,
-    winNumber = 2,      // we will create a function that changes this number
+    winNumber = getRandomNum(min, max),      // we will create a function that changes this number
+                        // we make this a random number by creating a function getRandomNum
     guessesLeft = 3;
 
 
@@ -28,6 +29,13 @@ const game = document.querySelector('#game'),
 // Assign UI min and max
 minNum.textContent = min;
 maxNum.textContent = max;
+
+// play again event Listener
+game.addEventListener('mousedown', function(e){
+    if(e.target.className === 'play again'){
+        window.location.reload();
+}
+});
 
 // listen for guess
 guessBtn.addEventListener('click', function(){
@@ -90,7 +98,6 @@ if(guess === winNumber){
 
 
 
-
 // game over 
 function gameOver(won, msg){
     let color; 
@@ -105,7 +112,18 @@ function gameOver(won, msg){
     // set message 
     setMessage(msg);
 
+    // play again?
+    guessBtn.value = 'play again';
+    guessBtn.className += 'play-again';
+
 }
+
+
+//  get winning number
+function getRandomNum(min, max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
 
 // set message 
 function setMessage(msg, color){
